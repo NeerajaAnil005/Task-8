@@ -1,0 +1,11 @@
+SELECT * FROM employee_db.employees;
+ DELIMITER //
+ CREATE FUNCTION bonus_calc(sal INT)
+	RETURNS INT
+	DETERMINISTIC
+	BEGIN
+         RETURN sal * 0.05;
+     END //
+     DELIMITER ;
+ SELECT EMP_NAME, SALARY, bonus_calc(SALARY) AS BONUS
+     FROM EMPLOYEES;
